@@ -1,2 +1,2 @@
 #!/bin/bash
-echo 0-current_working_directory \n 1-listit \n README.md
+echo ls
