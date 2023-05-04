@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # This script automatically configure a Ubuntu machine to respect above requirements
 
-sudo apt update
-sudo apt install -y nginx
-string="server_name _;\n\trewrite ^\/redirect_me http://google.com permanent;"
-sed -i "s/server_name _;/$string/" /etc/nginx/sites-enabled/default
+sudo apt-get update
+sudo apt-get install -y nginx
+string="server_name _;\n\trewrite ^\/redirect_me http:\/\/google.com permanent;"
+sudo sed -i "s/server_name _;/$string/" /etc/nginx/sites-enabled/default
 sudo service nginx restart
