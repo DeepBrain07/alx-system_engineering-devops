@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This script prints information about a domain and subdomain
+
+info () {
+    rType=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | head -1)
+    address=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -1)
+    echo "The subdomain $2 is a $rType record and points to $address"
+}
+if [ "$#" == 1 ]
+then
+    info "$1" "www"
+    info "$1" "lb-01"
+    info "$1" "web-01"
+    info "$1" "web-02"
+elif [ "$#" == 2 ]
+then
+    info "$1" "$2"
+fi
