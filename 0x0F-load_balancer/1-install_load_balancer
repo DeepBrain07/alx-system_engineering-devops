@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script configures a new Ubuntu machine to respect above requirements
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+config=\
+"
+frontend myFrontend
+	bind *:80
+	mode http
+	default_backend myServers
+backend myServers
+	balance roundrobin
+	bind *:80
+	server 183421-web-01 100.25.45.246:80 check
+	server 183421-web-02 54.236.26.56 :80 check
+"
+echo $config | sudo tee -a /etc/haproxy/haproxy.cfg
+sudo haproxy -f haproxy.cfg
+sudo service haproxy restart
