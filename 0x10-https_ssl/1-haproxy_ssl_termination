@@ -37,7 +37,7 @@ defaults
 
 frontend myFrontend
 	bind *:443 ssl crt  /etc/haproxy/certs/mysslcert.pem
-	http-request add-header https https
+	http-request add-header X-Forwarded-Proto https
 	default_backend allServers
 
 backend allServers
