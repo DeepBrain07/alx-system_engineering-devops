@@ -11,6 +11,6 @@ http {
 		}
 }
 events {}"
-sudo echo $config >> /etc/nginx/nginx.conf
+echo "$config" | sudo tee /etc/nginx/nginx.conf
 sudo ufw allow 80
 sudo service nginx restart
