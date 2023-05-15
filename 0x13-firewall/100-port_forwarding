@@ -1,0 +1,6 @@
+echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+sudo sh -c "iptables-save > /etc/iptables.rules"
+sudo apt-get -y install iptables-persistent
+sudo systemctl start netfilter-persistent
