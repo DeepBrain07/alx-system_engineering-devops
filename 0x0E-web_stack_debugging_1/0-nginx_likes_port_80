@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script debugs a NGINX config.
+sudo rm /etc/nginx/nginx.conf
+sudo pkill nginx
+sudo lsof -i :80
+config="
+http {
+	server {
+		listen 80;
+		root /var/www/html;
+		}
+}
+events {}"
+sudo echo $config >> /etc/nginx/nginx.conf
+sudo ufw allow 80
+sudo service nginx restart
