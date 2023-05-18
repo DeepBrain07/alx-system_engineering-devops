@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-# This script restricts nginx priviledges
-echo "user nginx;" >> sudo tee /etc/nginx/nginx.conf
-conf="\n\t\tlisten 8080 default_server;\\n\t\tserver_name _;"
-sudo sed "listen/d" /etc/nginx/nginx.conf
-sudo sed "/server_name/d" /etc/nginx/nginx.conf
-sudo sed "a/server {/$conf/" /etc/nginx/nginx.conf
-echo "nginx ALL=(ALL:ALL) !/usr/bin/apt-get remove" | sudo tee /etc/sudoers
+# This script restricts nginx privilege
+sudo sed "s/user www-data;/user nginx;/" /etc/nginx/nginx.conf
 sudo service nginx restart
