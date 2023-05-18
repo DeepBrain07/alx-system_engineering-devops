@@ -4,4 +4,4 @@ sudo mysqldump -u root --password "$1" --all-databases > backup.sql
 date=$(date "+%d-%m-%Y")
 ext=".tar.gz"
 file="$date""$ext"
-tar -czvf "$file" backup.sql
+tar -czf "$file" backup.sql
