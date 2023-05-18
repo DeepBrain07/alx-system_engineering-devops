@@ -1,4 +1,4 @@
-#!/usr/bin/etc bash
+#!/usr/bin/env bash
 # This script restricts nginx priviledges
 echo "user nginx;" >> sudo tee /etc/nginx/nginx.conf
 conf="\n\t\tlisten 8080 default_server;\\n\t\tserver_name _;"
