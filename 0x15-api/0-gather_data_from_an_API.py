@@ -16,3 +16,4 @@ for i in range(len(dictLst)):
         tasks_done = dictLst[i]["tasks_done"]
         total_tasks = dictLst[i]["total_tasks"]
         print("Employee {} is done with tasks({}/{}):".format(name, tasks_done, total_tasks))
+        print(dictLst[i]["task_title"])
