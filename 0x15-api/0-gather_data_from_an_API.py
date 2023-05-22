@@ -5,7 +5,10 @@ import sys
 from urllib.request import urlopen
 
 
-with urlopen("https://my-json-server.typicode.com/DeepBrain07/alx-system_engineering-devops/db") as f:
+link1 = "https://my-json-server.typicode.com/"
+link2 = "DeepBrain07/alx-system_engineering-devops/db"
+link = link1 + link2
+with urlopen(link) as f:
     data = f.read().decode("UTF-8")
     data = json.loads(data)
 id = int(sys.argv[1])
@@ -15,5 +18,6 @@ for i in range(len(dictLst)):
         name = dictLst[i]["name"]
         tasks_done = dictLst[i]["tasks_done"]
         total_tasks = dictLst[i]["total_tasks"]
-        print("Employee {} is done with tasks({}/{}):".format(name, tasks_done, total_tasks))
+        tmp = "Employee {} is done with tasks({}/{}):"
+        print(tmp.format(name, tasks_done, total_tasks))
         print(dictLst[i]["task_title"])
