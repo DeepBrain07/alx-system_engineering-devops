@@ -17,9 +17,9 @@ if __name__ == "__main__":
     dictLst = data["employees"]
     for i in range(len(dictLst)):
         if dictLst[i]["id"] == id:
-            name = dictLst[i].get("name")
-            tasks_done = dictLst[i].get("tasks_done")
-            total_tasks = dictLst[i].get("total_tasks")
+            EMPLOYEE_NAME = dictLst[i].get("EMPLOYEE_NAME")
+            NUMBER_OF_DONE_TASKS = dictLst[i].get("NUMBER_OF_DONE_TASKS")
+            TOTAL_NUMBER_OF_TASKS = dictLst[i].get("TOTAL_NUMBER_OF_TASKS")
             tmp = "Employee {} is done with tasks({}/{}):"
-            print(tmp.format(name, tasks_done, total_tasks))
-            print(dictLst[i]["task_title"])
+            print(tmp.format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS))
+            print(dictLst[i].get("TASK_TITLE"))
