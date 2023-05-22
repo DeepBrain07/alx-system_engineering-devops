@@ -6,20 +6,26 @@ from urllib.request import urlopen
 
 
 if __name__ == "__main__":
-    link1 = "https://my-json-server.typicode.com/"
-    link2 = "DeepBrain07/alx-system_engineering-devops/db"
-    link = link1 + link2
-    with urlopen(link) as f:
-        """ opens the specified link """
+    url = "https://jsonplaceholder.typicode.com/users"
+    with urlopen(url) as f:
         data = f.read().decode("UTF-8")
         data = json.loads(data)
     id = int(sys.argv[1])
-    dictLst = data["employees"]
-    for i in range(len(dictLst)):
-        if dictLst[i]["id"] == id:
-            EMPLOYEE_NAME = dictLst[i].get("EMPLOYEE_NAME")
-            NUMBER_OF_DONE_TASKS = dictLst[i].get("NUMBER_OF_DONE_TASKS")
-            TOTAL_NUMBER_OF_TASKS = dictLst[i].get("TOTAL_NUMBER_OF_TASKS")
-            tmp = "Employee {} is done with tasks({}/{}):"
-            print(tmp.format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS))
-            print(dictLst[i].get("TASK_TITLE"))
+    for i in range(len(data)):
+        if data[i].get("id") == id:
+            name = data[i].get("name")
+    todo_url = url + "/" + str(id) + "/" + "todos"
+    with urlopen(todo_url) as f:
+        data = f.read().decode("UTF-8")
+        data = json.loads(data)
+    total_task = len(data)
+    task_done = 0
+    for i in range(len(data)):
+        if data[i].get("completed") is True:
+            task_done += 1
+    myStr = "Employee {} is done with tasks({}/{}):"
+    print(myStr.format(name, task_done, total_task))
+    for i in range(len(data)):
+        if data[i].get("completed") is True:
+            tmp = data[i].get("title")
+            print("\t {}".format(tmp))
