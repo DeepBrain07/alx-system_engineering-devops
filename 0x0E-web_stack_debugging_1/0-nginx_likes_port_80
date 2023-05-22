@@ -8,7 +8,7 @@ http {
 	server {
 		listen 80;
 		root /var/www/html;
-		}
+	}
 }
 events {}"
 echo "$config" | sudo tee /etc/nginx/nginx.conf
