@@ -9,6 +9,7 @@ link1 = "https://my-json-server.typicode.com/"
 link2 = "DeepBrain07/alx-system_engineering-devops/db"
 link = link1 + link2
 with urlopen(link) as f:
+    """ opens the specified link """
     data = f.read().decode("UTF-8")
     data = json.loads(data)
 id = int(sys.argv[1])
