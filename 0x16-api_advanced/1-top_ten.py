@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-number of subscribers for a given subreddit
+top 10 listings for a given subreddit
 """
 
 from requests import get
