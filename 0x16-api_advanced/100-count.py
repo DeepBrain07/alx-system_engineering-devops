@@ -26,3 +26,27 @@ def recurse(subreddit, hot_list=[]):
         return hot_list
     else:
         return (None)
+
+
+def replace_word(word_list, old_word, new_word):
+    """ replaces a word in a list """
+    for i in range(len(word_list)):
+        if word_list[i] == old_word:
+            word_list[i] = new_word
+
+
+def count_words(subreddit, word_list):
+    """  parses the title of all hot articles, and prints
+    a sorted count of given keyword """
+    word_list = word_list.sort()
+    count = 0
+    lst = recurse(subreddit)
+    for w in lst:
+        replace_word(lst, w, w.lower())
+    for wd in word_list:
+        wd = wd.lower()
+        for i in lst:
+            if wd in i.split():
+                count += 1
+        print("{}: {}".format(wd, count))
+        count = 0
